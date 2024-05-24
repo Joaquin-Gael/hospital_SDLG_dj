@@ -3,10 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home_blog(request):
-    return render(request, 'index.html',{'title':'home_blog'})
+    return render(request, 'index.html',{'title':'Blog - Hospital SDLG'})
 
 def atencion_al_paciente(request):
-    return render(request, 'atencionalpaciente.html',{'title':'atencion al cliente'})
+    return render(request, 'atencionalpaciente.html')
 
 def contactos_blog(request):
-    return render(request, 'contactos.html',{'title':'contactos'})
+    return render(request, 'contactos.html')
