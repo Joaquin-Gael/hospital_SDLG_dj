@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hospital SDLG ofrece atención médica de calidad en Córdoba. Consulta médica, diagnóstico y tratamiento con equipos de última tecnología. ¡Solicita turno ahora!">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="icon" href="{% static 'IMG/logo.png' %}" type="image/x-icon">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<!-- Header -->
+<header class="bg-white text-gray-900 p-4 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+        {% block header_logo %}
+        <div class="flex items-center">
+            <img src="{% static 'IMG/logo.png' %}" alt="logo del hospital SDLG" class="h-12 mr-2">
+            <img src="{% static 'IMG/nombrelogo.png' %}" alt="nombre del hospital SDLG" class="h-12">
+        </div>
+        {% endblock %}
+        {% block nav %}
+        <nav class="mt-4">
+            <ul class="flex space-x-4 justify-center">
+                <li><a href="/turnero/form" class="hover:text-gray-300">Turnos</a></li>
+                <li><a href="/blog/atencion_al_paciente" class="hover:text-gray-300">Atención al Paciente</a></li>
+                <li><a href="/blog/constactos" class="hover:text-gray-300">Contacto</a></li>
+                <li><a href="/blog/home" class="hover:text-gray-300">Blog</a></li>
+                <li><a href="" class="hover:text-gray-300">Registrarme</a></li>
+            </ul>
+        </nav>
+        {% endblock %}
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white text-center p-6">
+    <div class="container mx-auto">
+        {% block footer_content %}
+        <div class="container mx-auto">
+            <div class="mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <div class="flex justify-center items-center space-x-4">
+                    <img src="{% static 'IMG/correo.png' %}" alt="correo electrónico" class="h-6 w-6 rounded-full">
+                    <p class="ml-2 text-sm sm:text-base">contacto@hospitalsdlg.com</p>
+                </div>
+                <div class="flex justify-center items-center space-x-4">
+                    <img src="{% static 'IMG/telefono.png' %}" alt="teléfono" class="h-6 w-6 rounded-full">
+                    <p class="ml-2 text-sm sm:text-base">+351 666 6469</p>
+                </div>
+                <div class="flex justify-center items-center space-x-4">
+                    <img src="{% static 'IMG/direccion.png' %}" alt="ubicación" class="h-6 w-6 rounded-full">
+                    <p class="ml-2 text-sm sm:text-base">Elsa Pato 2385, Córdoba Capital, Argentina</p>
+                </div>
+            </div>
+        {% endblock %}
+        {% block footer_text %}
+        <p class="text-gray-600 mb-4 text-sm sm:text-base">©2024 SDLG. Todos los derechos reservados.</p>
+        {% endblock %}
+    </div>
+</footer>
+
+<script src="{% static 'JS/blog_scripts.js' %}"></script>
+
+<!-- Bloque para scripts adicionales -->
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

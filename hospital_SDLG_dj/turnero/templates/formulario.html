@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Solicitar Turno - Hospital SDLG{% endblock %}
+
+{% block content %}
+<div class="container mx-auto my-12 p-6 bg-white rounded shadow">
+    <h2 class="text-3xl font-bold text-center mb-8">Solicitar Turno</h2>
+    <form class="max-w-lg mx-auto">
+        <div class="mb-4">
+            <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu nombre completo">
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico</label>
+            <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu correo electrónico">
+        </div>
+        <div class="mb-4">
+            <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu número de teléfono">
+        </div>
+        <div class="mb-4">
+            <label for="fecha" class="block text-gray-700 text-sm font-bold mb-2">Fecha del Turno</label>
+            <input type="date" id="fecha" name="fecha" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="hora" class="block text-gray-700 text-sm font-bold mb-2">Hora del Turno</label>
+            <input type="time" id="hora" name="hora" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="especialidad" class="block text-gray-700 text-sm font-bold mb-2">Especialidad</label>
+            <select id="especialidad" name="especialidad" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="" disabled selected>Selecciona una especialidad</option>
+                <option value="medicina_general">Medicina General</option>
+                <option value="pediatria">Pediatría</option>
+                <option value="cardiologia">Cardiología</option>
+                <option value="dermatologia">Dermatología</option>
+                <option value="neurologia">Neurología</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje Adicional</label>
+            <textarea id="mensaje" name="mensaje" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Detalles adicionales..."></textarea>
+        </div>
+        <div class="flex items-center justify-center">
+            <button type="submit" class="bg-gray-900 text-white py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-700 focus:outline-none focus:shadow-outline">Solicitar Turno</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Contacto - Hospital SDLG{% endblock %}
+
+{% block content %}
+<div class="container mx-auto my-12 p-6 bg-white rounded shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-8">Contacto</h2>
+    
+    <section class="mb-12">
+        <h3 class="text-2xl font-semibold mb-4">Póngase en Contacto</h3>
+        <p class="text-gray-700 text-base mb-6">
+            Si tiene alguna pregunta, inquietud o comentario, no dude en comunicarse con nosotros. Estamos aquí para ayudarle.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <div class="flex justify-center items-center space-x-4">
+                <img src="{% static 'IMG/correo.png' %}" alt="correo electrónico" class="h-6 w-6 rounded-full">
+                <p class="ml-2 text-sm sm:text-base">contacto@hospitalsdlg.com</p>
+            </div>
+            <div class="flex justify-center items-center space-x-4">
+                <img src="{% static 'IMG/telefono.png' %}" alt="teléfono" class="h-6 w-6 rounded-full">
+                <p class="ml-2 text-sm sm:text-base">+351 666 6469</p>
+            </div>
+            <div class="flex justify-center items-center space-x-4">
+                <img src="{% static 'IMG/direccion.png' %}" alt="ubicación" class="h-6 w-6 rounded-full">
+                <p class="ml-2 text-sm sm:text-base">Elsa Pato 2385, Córdoba Capital, Argentina</p>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h3 class="text-2xl font-semibold mb-4">Formulario de Contacto</h3>
+        <p class="text-gray-700 text-base mb-6">
+            Complete el siguiente formulario y nos pondremos en contacto con usted lo antes posible.
+        </p>
+        <form action="/send_message" method="post" class="space-y-4">
+            <div>
+                <label for="nombre" class="block text-lg font-medium text-gray-700">Nombre Completo</label>
+                <input type="text" name="nombre" id="nombre" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400" required>
+            </div>
+            <div>
+                <label for="email" class="block text-lg font-medium text-gray-700">Correo Electrónico</label>
+                <input type="email" name="email" id="email" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400" required>
+            </div>
+            <div>
+                <label for="mensaje" class="block text-lg font-medium text-gray-700">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" rows="5" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-gray-400 focus:border-gray-400" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="bg-gray-900 text-white py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-700 focus:outline-none focus:shadow-outline">Enviar Mensaje</button>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

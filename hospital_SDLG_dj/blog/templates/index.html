@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<style>
+    #Hero {
+        background-image: url("{% static 'IMG/fondo.jpg' %}");
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <main>
+            <section class="bg-cover bg-center h-screen" id="Hero">
+                <div class="bg-gray-900 bg-opacity-50 h-full flex flex-col justify-center items-center text-center">
+                    <h2 class="text-4xl font-bold text-white mb-4">Bienvenido a Hospital SDLG</h2>
+                    <p class="text-xl text-white mb-8">Atención médica de calidad para usted y su familia</p>
+                    <a href="/turnero/form/" class="bg-white text-gray-900 py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-200">Solicitar Turno</a>
+                </div>
+            </section>
+            <section class="container mx-auto my-12 p-6 bg-white rounded shadow">
+                <h2 class="text-3xl font-bold text-center mb-8">Nuestros Servicios</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-4">
+                        <img src="{% static 'IMG/consultamedica.jpg' %}" alt="Consulta Médica" class="h-auto w-24 mx-auto mb-4 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Consulta Médica</h3>
+                        <p>Atención personalizada para diagnósticos precisos y tratamientos efectivos.</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <img src="{% static 'IMG/diagnostico.jpg' %}" alt="Diagnóstico" class="h-auto w-24 mx-auto mb-4 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Diagnóstico</h3>
+                        <p>Equipos de última tecnología para un diagnóstico rápido y confiable.</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <img src="{% static 'IMG/tratamiento.jpg' %}" alt="Tratamiento" class="h-auto w-24 mx-auto mb-4 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Tratamiento</h3>
+                        <p>Tratamientos innovadores y eficaces para diversas condiciones de salud.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gray-500 py-12">
+                <div class="container mx-auto text-center">
+                    <div class="">
+                        <h3 class="text-3xl font-bold">
+                            Te cuidan los mejores Profesionales de la salud
+                        </h3>
+                    </div>
+                    <div class="flex items-center justify-center mt-4">
+                        <img src="{% static 'SVG/undraw_doctors_p6aq.svg' %}" alt="ilustracion de doctores" class="h-52 shadow-sm">
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gray-200 py-12">
+                <div class="container mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-8">Testimonios</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded shadow">
+                            <p class="italic mb-4">"El equipo del Hospital SDLG me brindó una atención excelente. Estoy muy agradecido."</p>
+                            <p class="font-bold">- Benito Camelo</p>
+                        </div>
+                        <div class="bg-white p-6 rounded shadow">
+                            <p class="italic mb-4">"Gracias al diagnóstico temprano y el tratamiento eficaz, mi salud ha mejorado significativamente."</p>
+                            <p class="font-bold">- Rosa Melano</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gray-900 text-white py-12 text-center">
+                <h2 class="text-3xl font-bold mb-4">¡Registrate ya!</h2>
+                <p class="text-lg mb-8">Únase a nuestra comunidad de pacientes y obtenga acceso a atención médica de calidad.</p>
+                <a href="/registro" class="bg-white text-gray-900 py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-200">Registrarme</a>
+            </section>
+        </main>
+    </main>
+    <!-- Footer del index.html -->
+{% endblock %}

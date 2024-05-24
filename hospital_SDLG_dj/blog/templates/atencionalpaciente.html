@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Atención al Paciente - Hospital SDLG{% endblock %}
+
+{% block content %}
+<div class="container mx-auto my-12 p-6 bg-white rounded shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-8">Atención al Paciente</h2>
+    
+    <section class="mb-12">
+        <h3 class="text-2xl font-semibold mb-4">Nuestro Compromiso</h3>
+        <p class="text-gray-700 text-base mb-6">
+            En Hospital SDLG, nos comprometemos a brindar una atención médica de calidad, personalizada y humana. Nuestro equipo de profesionales está dedicado a atender las necesidades de nuestros pacientes con el mayor cuidado y respeto.
+        </p>
+        <div class="flex items-center justify-center">
+            <img src="{% static 'SVG/undraw_doctors_p6aq.svg' %}" alt="Atención al Paciente" class="h-64 w-auto rounded-lg shadow-md">
+        </div>
+    </section>
+    
+    <section class="mb-12">
+        <h3 class="text-2xl font-semibold mb-4">Servicios Disponibles</h3>
+        <ul class="list-disc list-inside text-gray-700 text-base">
+            <li>Consulta Médica General</li>
+            <li>Atención de Urgencias</li>
+            <li>Diagnóstico y Tratamiento</li>
+            <li>Atención Especializada</li>
+            <li>Apoyo Psicológico</li>
+            <li>Rehabilitación y Terapia Física</li>
+        </ul>
+    </section>
+    
+    <section class="mb-12">
+        <h3 class="text-2xl font-semibold mb-4">Cómo Solicitar un Turno</h3>
+        <p class="text-gray-700 text-base mb-6">
+            Para solicitar un turno, puede dirigirse a nuestra página de turnos y completar el formulario en línea, o puede contactarnos a través de los siguientes medios:
+        </p>
+        <ul class="list-disc list-inside text-gray-700 text-base mb-6">
+            <li>Teléfono: +351 666 6469</li>
+            <li>Email: contacto@hospitalsdlg.com</li>
+            <li>Visitando nuestra recepción en: Elsa Pato 2385, Córdoba Capital, Argentina</li>
+        </ul>
+        <div class="text-center">
+            <a href="/turnero" class="bg-gray-900 text-white py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-700 focus:outline-none focus:shadow-outline">Solicitar Turno</a>
+        </div>
+    </section>
+    
+    <section>
+        <h3 class="text-2xl font-semibold mb-4">Contacto Directo</h3>
+        <p class="text-gray-700 text-base mb-6">
+            Si tiene alguna pregunta o necesita asistencia inmediata, no dude en ponerse en contacto con nosotros. Estamos aquí para ayudarlo.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="flex justify-center items-center space-x-4">
+                <img src="{% static 'IMG/correo.png' %}" alt="correo electrónico" class="h-6 w-6 rounded-full">
+                <p class="ml-2 text-sm sm:text-base">contacto@hospitalsdlg.com</p>
+            </div>
+            <div class="flex justify-center items-center space-x-4">
+                <img src="{% static 'IMG/telefono.png' %}" alt="teléfono" class="h-6 w-6 rounded-full">
+                <p class="ml-2 text-sm sm:text-base">+351 666 6469</p>
+            </div>
+            <div class="flex justify-center items-center space-x-4">
+                <img src="{% static 'IMG/direccion.png' %}" alt="ubicación" class="h-6 w-6 rounded-full">
+                <p class="ml-2 text-sm sm:text-base">Elsa Pato 2385, Córdoba Capital, Argentina</p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

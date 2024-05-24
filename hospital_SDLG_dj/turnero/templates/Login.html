@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio de Sesión - Hospital SDLG{% endblock %}
+
+{% block content %}
+<div class="container mx-auto my-12 p-6 bg-white rounded shadow-lg">
+    <h2 class="text-3xl font-bold text-center mb-8">Iniciar Sesión</h2>
+    <form action="{{ routes.AUTH_USER }}" method="post" class="max-w-lg mx-auto">
+        <!-- CSRF Token -->
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+        <div class="mb-4">
+            <label for="dni" class="block text-gray-700 text-sm font-bold mb-2">Ingrese su DNI:</label>
+            <input type="text" name="dni" id="dni" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Número de documento">
+        </div>
+        <div class="mb-4">
+            <label for="contraseña" class="block text-gray-700 text-sm font-bold mb-2">Ingrese su contraseña:</label>
+            <input type="password" name="contraseña" id="contraseña" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="••••••••••" autocomplete="new-password">
+        </div>
+        <div class="flex items-center justify-between mb-6">
+            <button type="submit" class="bg-gray-900 text-white py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-700 focus:outline-none focus:shadow-outline">Iniciar sesión</button>
+        </div>
+        <div class="text-sm text-center text-gray-600">
+            <p class="mb-2">¿No tienes una cuenta?</p>
+            <a href="/registro" class="font-medium text-indigo-600 hover:underline">Crear cuenta</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
