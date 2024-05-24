@@ -8,4 +8,4 @@ def loguin_turnero(request):
     return render(request, 'Login.html')
 
 def signup_turnero(request):
-    return render(request,'SignUp.html')
+    return render(request,'SignUp.html',{'medicos':[]})
