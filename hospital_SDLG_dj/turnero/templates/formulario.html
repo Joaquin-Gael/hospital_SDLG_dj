@@ -7,44 +7,50 @@
 {% block content %}
 <div class="container mx-auto my-12 p-6 bg-white rounded shadow">
     <h2 class="text-3xl font-bold text-center mb-8">Solicitar Turno</h2>
-    <form class="max-w-lg mx-auto">
+    <form method="post">
+        {% csrf_token %}
         <div class="mb-4">
-            <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu nombre completo">
+            <label for="paciente_nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
+            <input type="text" id="paciente_nombre" name="paciente_nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
-            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico</label>
-            <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu correo electrónico">
+            <label for="paciente_apellido" class="block text-gray-700 text-sm font-bold mb-2">Apellido:</label>
+            <input type="text" id="paciente_apellido" name="paciente_apellido" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
-            <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu número de teléfono">
+            <label for="fecha_nacimiento" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
-            <label for="fecha" class="block text-gray-700 text-sm font-bold mb-2">Fecha del Turno</label>
-            <input type="date" id="fecha" name="fecha" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <label for="direccion" class="block text-gray-700 text-sm font-bold mb-2">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
-            <label for="hora" class="block text-gray-700 text-sm font-bold mb-2">Hora del Turno</label>
-            <input type="time" id="hora" name="hora" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
-            <label for="especialidad" class="block text-gray-700 text-sm font-bold mb-2">Especialidad</label>
-            <select id="especialidad" name="especialidad" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                <option value="" disabled selected>Selecciona una especialidad</option>
-                <option value="medicina_general">Medicina General</option>
-                <option value="pediatria">Pediatría</option>
-                <option value="cardiologia">Cardiología</option>
-                <option value="dermatologia">Dermatología</option>
-                <option value="neurologia">Neurología</option>
+            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+            <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="medico" class="block text-gray-700 text-sm font-bold mb-2">Médico:</label>
+            <select id="medico" name="medico" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                {% for medico in medicos %}
+                <option value="{{ medico.id }}">{{ medico.nombre }} {{ medico.apellido }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="mb-4">
-            <label for="mensaje" class="block text-gray-700 text-sm font-bold mb-2">Mensaje Adicional</label>
-            <textarea id="mensaje" name="mensaje" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Detalles adicionales..."></textarea>
+            <label for="fecha" class="block text-gray-700 text-sm font-bold mb-2">Fecha del Turno:</label>
+            <input type="datetime-local" id="fecha" name="fecha" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="flex items-center justify-center">
-            <button type="submit" class="bg-gray-900 text-white py-2 px-4 rounded-full text-lg font-semibold hover:bg-gray-700 focus:outline-none focus:shadow-outline">Solicitar Turno</button>
+        <div class="mb-4">
+            <label for="motivo" class="block text-gray-700 text-sm font-bold mb-2">Motivo del Turno:</label>
+            <textarea id="motivo" name="motivo" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sacar Turno</button>
         </div>
     </form>
 </div>
