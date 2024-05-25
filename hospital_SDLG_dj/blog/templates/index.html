@@ -57,24 +57,14 @@
         <h2 class="text-3xl font-bold text-center mb-2">Testimonios</h2>
         <div class="w-10 h-1 bg-gray-900 mx-auto my-4 mb-4"></div>
         <div class="flex flex-wrap justify-center">
+            {% for testimonio in testimonios %}
             <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
                 <div class="bg-white p-6 rounded shadow">
-                    <p class="italic mb-4">"El equipo del Hospital SDLG me brindó una atención excelente. Estoy muy agradecido."</p>
-                    <p class="font-bold">- Benito Camelo</p>
+                    <p class="italic mb-4">"{{testimonio.contenido}}..."</p>
+                    <p class="font-bold">- {{testimonio.usuario}}</p>
                 </div>
             </div>
-            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-                <div class="bg-white p-6 rounded shadow">
-                    <p class="italic mb-4">"Gracias al diagnóstico temprano y el tratamiento eficaz, mi salud ha mejorado significativamente."</p>
-                    <p class="font-bold">- Rosa Melano</p>
-                </div>
-            </div>
-            <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-                <div class="bg-white p-6 rounded shadow">
-                    <p class="italic mb-4">"Mi experiencia en el Hospital SDLG fue increíble, la grasa es lo mejor que me pasó..."</p>
-                    <p class="font-bold">- Elvio Lao</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

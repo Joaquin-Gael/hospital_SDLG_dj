@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . import models
 
 # Create your views here.
 def home_blog(request):
-    return render(request, 'index.html',{'title':'Blog - Hospital SDLG'})
+    testimoneos = models.Testimonios.objects.all()
+    return render(request, 'index.html',{'title':'Blog - Hospital SDLG','testimonios':testimoneos})
 
 def atencion_al_paciente(request):
     return render(request, 'atencionalpaciente.html')
