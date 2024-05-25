@@ -16,9 +16,10 @@
                 <label for="dni" class="block text-left text-gray-700 text-sm font-bold mb-2">Ingrese su DNI:</label>
                 <input type="text" id="dni" name="dni" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Número de documento">
             </div>
+            {% csrf_token %}
             <div class="mb-4">
                 <label for="username" class="block text-left text-gray-700 text-sm font-bold mb-2">Nombre:</label>
-                <input type="text" id="username" name="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu nombre">
+                <input type="text" id="username" name="nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu nombre">
             </div>
             <div class="mb-4">
                 <label for="apellido" class="block text-left text-gray-700 text-sm font-bold mb-2">Apellido:</label>
@@ -26,18 +27,18 @@
             </div>
             <div class="mb-4">
                 <label for="fecha_nacido" class="block text-left text-gray-700 text-sm font-bold mb-2">Fecha de nacimiento:</label>
-                <input type="date" id="fecha_nacido" name="fecha_nacido" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
             <div class="mb-4">
                 <label for="e-mail" class="block text-left text-gray-700 text-sm font-bold mb-2">Email:</label>
-                <input type="email" id="e-mail" name="e-mail" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu correo electrónico">
+                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tu correo electrónico">
             </div>
             <div class="mb-4">
                 <label for="contraseña" class="block text-left text-gray-700 text-sm font-bold mb-2">Ingrese su contraseña:</label>
                 <input type="password" id="contraseña" name="contraseña" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="••••••••••" autocomplete="new-password">
             </div>
             <button type="submit" class="hover:bg-gray-500 w-full text-white bg-blue-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center my-6">Registrar</button>
-            <p class="text-gray-700 text-sm">¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+            <p class="text-gray-700 text-sm">¿Ya tienes una cuenta? <a href="/turnero/login">Inicia sesión</a></p>
             <hr class="my-6">
             <button class="bg-[#ffffff] border border-[#f1f1f3] hover:bg-blue-50 hover:border-blue-300 duration-500 text-slate-950 text-sm py-2 px-3 rounded-md flex items-center">
                 <div class="rounded-full mr-4 my-1">
