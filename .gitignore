@@ -24,8 +24,8 @@ __pycache__/
 media/
 
 # Archivos estáticos
-staticfiles/
-static/
+# staticfiles/
+# static/
 
 # Archivos temporales
 *.tmp
