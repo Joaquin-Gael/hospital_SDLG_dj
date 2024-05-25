@@ -6,6 +6,7 @@
     <meta name="description" content="Hospital SDLG ofrece atención médica de calidad en Córdoba. Consulta médica, diagnóstico y tratamiento con equipos de última tecnología. ¡Solicita turno ahora!">
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     {% load static %}
     <link rel="icon" href="{% static 'IMG/logo.png' %}" type="image/x-icon">
     {% block extra_head %}{% endblock %}
@@ -22,13 +23,13 @@
         </div>
         {% endblock %}
         {% block nav %}
-        <nav class="mt-4">
-            <ul class="flex space-x-4 justify-center">
-                <li><a href="/turnero/form" class="hover:text-gray-300">Turnos</a></li>
-                <li><a href="/blog/atencion_al_paciente" class="hover:text-gray-300">Atención al Paciente</a></li>
-                <li><a href="/blog/constactos" class="hover:text-gray-300">Contacto</a></li>
-                <li><a href="/blog/home" class="hover:text-gray-300">Blog</a></li>
-                <li><a href="/turnero/singup/" class="hover:text-gray-300">Registrarme</a></li>
+        <nav class="flex-grow">
+            <ul class="flex space-x-4 justify-end">
+                <li><a href="/blog/home/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="/turnero/form/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="far fa-calendar-alt"></i> Turnos</a></li>
+                <li><a href="/blog/atencion_al_paciente/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-md"></i> Atención al Paciente</a></li>
+                <li><a href="/blog/contactos" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-phone"></i> Contacto</a></li>
+                <li><a href="/turnero/singup/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-plus"></i> Registrarme</a></li>
             </ul>
         </nav>
         {% endblock %}
@@ -44,21 +45,22 @@
 <footer class="bg-gray-900 text-white text-center p-6">
     <div class="container mx-auto">
         {% block footer_content %}
-        <div class="container mx-auto">
-            <div class="mb-4 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <div class="flex justify-center items-center space-x-4">
-                    <img src="{% static 'IMG/correo.png' %}" alt="correo electrónico" class="h-6 w-6 rounded-full">
-                    <p class="ml-2 text-sm sm:text-base">contacto@hospitalsdlg.com</p>
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-center">
+            <div class="mb-4 md:mb-0 flex flex-col md:flex-row items-center space-x-4">
+                <div class="flex justify-center md:justify-start items-center space-x-2">
+                    <i class="fas fa-envelope h-6 w-6"></i>
+                    <p class="text-sm">contacto@hospitalsdlg.com</p>
                 </div>
-                <div class="flex justify-center items-center space-x-4">
-                    <img src="{% static 'IMG/telefono.png' %}" alt="teléfono" class="h-6 w-6 rounded-full">
-                    <p class="ml-2 text-sm sm:text-base">+351 666 6469</p>
+                <div class="flex justify-center md:justify-start items-center space-x-2">
+                    <i class="fas fa-phone h-6 w-6"></i>
+                    <p class="text-sm">+351 666 6469</p>
                 </div>
-                <div class="flex justify-center items-center space-x-4">
-                    <img src="{% static 'IMG/direccion.png' %}" alt="ubicación" class="h-6 w-6 rounded-full">
-                    <p class="ml-2 text-sm sm:text-base">Elsa Pato 2385, Córdoba Capital, Argentina</p>
+                <div class="flex justify-center md:justify-start items-center space-x-2">
+                    <i class="fas fa-map-marker-alt h-6 w-6"></i>
+                    <p class="text-sm">Elsa Pato 2385, Córdoba Capital, Argentina</p>
                 </div>
             </div>
+        </div>
         {% endblock %}
         {% block footer_text %}
         <p class="text-gray-600 mb-4 text-sm sm:text-base">©2024 SDLG. Todos los derechos reservados.</p>
