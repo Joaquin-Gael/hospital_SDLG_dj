@@ -15,11 +15,11 @@
 
 <!-- Header -->
 <header class="bg-white text-gray-900 p-4 shadow">
-    <div class="container mx-auto flex justify-between items-center">
+    <div class="container mx-auto flex justify-between items-center md:space-x-40">
         {% block header_logo %}
-        <div class="flex items-center">
+        <div class="flex items-center flex-col md:flex-row">
             <img src="{% static 'IMG/logo.png' %}" alt="logo del hospital SDLG" class="h-12 mr-2">
-            <img src="{% static 'IMG/nombrelogo.png' %}" alt="nombre del hospital SDLG" class="h-12">
+            <a href="/blog/home/"><img src="{% static 'IMG/nombrelogo.png' %}" alt="nombre del hospital SDLG" class="h-12"></a>
         </div>
         {% endblock %}
         {% block nav %}
@@ -28,7 +28,6 @@
         </button>
         <nav id="navbar" class="hidden md:flex md:items-center md:space-x-4 md:justify-end w-full md:w-auto">
             <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-                <li><a href="/blog/home/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="/turnero/form/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="far fa-calendar-alt"></i> Turnos</a></li>
                 <li><a href="/blog/atencion_al_paciente/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-md"></i> Atención al Paciente</a></li>
                 <li><a href="/blog/contactos" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-phone"></i> Contacto</a></li>
