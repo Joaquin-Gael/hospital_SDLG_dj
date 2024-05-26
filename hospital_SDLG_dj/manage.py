@@ -5,11 +5,19 @@ import sys
 from threading import Thread
 import subprocess
 import socket
+import psutil
 
 def is_port_in_use(port):
     """Comprueba si un puerto está en uso."""
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         return s.connect_ex(('127.0.0.1', port)) == 0
+
+def kill_process_using_port(port):
+    """Detiene el proceso que utiliza el puerto especificado."""
+    for conn in psutil.net_connections():
+        if conn.laddr.port == port:
+            process = psutil.Process(conn.pid)
+            process.terminate()
 
 def run_streamlit_server():
     streamlit_command = "streamlit run chatbot/streamlit_app/chatbot_logic.py"
@@ -27,8 +35,11 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     
-    # Verifica si el servidor de Streamlit ya está en ejecución
-    if not is_port_in_use(8501):  # Cambia el número de puerto según sea necesario
+    # Verifica si el servidor de Streamlit ya está en ejecución en el puerto 8501
+    if is_port_in_use(8501):
+        # Detiene cualquier proceso que esté utilizando el puerto 8501
+        kill_process_using_port(8501)
+    else:
         # Arranca el servidor de Streamlit en un hilo aparte
         streamlit_thread = Thread(target=run_streamlit_server)
         streamlit_thread.daemon = True
