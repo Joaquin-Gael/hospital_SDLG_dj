@@ -53,3 +53,4 @@ node_modules/
 
 # Archivos .env
 .env
+hospital_SDLG_dj/.env
