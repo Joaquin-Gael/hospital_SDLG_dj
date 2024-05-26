@@ -47,3 +47,6 @@ pip-delete-this-directory.txt
 # Archivos de configuración de Django
 local_settings.py
 db.sqlite3
+
+# Node modules
+node_modules/
