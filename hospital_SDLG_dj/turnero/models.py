@@ -79,6 +79,7 @@ class Usuario(AbstractBaseUser):
 class Paciente(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     direccion = models.CharField(max_length=255)
+    telefono = models.CharField(max_length=255)
 
     def __str__(self):
         return f"Paciente: {self.usuario.nombre} {self.usuario.apellido}"

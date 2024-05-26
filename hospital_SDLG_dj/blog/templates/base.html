@@ -23,8 +23,11 @@
         </div>
         {% endblock %}
         {% block nav %}
-        <nav class="flex-grow">
-            <ul class="flex space-x-4 justify-end">
+        <button id="menu-toggle" class="block md:hidden px-2 py-1 text-gray-800 rounded border border-gray-400">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav id="navbar" class="hidden md:flex md:items-center md:space-x-4 md:justify-end w-full md:w-auto">
+            <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
                 <li><a href="/blog/home/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="/turnero/form/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="far fa-calendar-alt"></i> Turnos</a></li>
                 <li><a href="/blog/atencion_al_paciente/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-md"></i> Atención al Paciente</a></li>
@@ -63,7 +66,7 @@
         </div>
         {% endblock %}
         {% block footer_text %}
-        <p class="text-gray-600 mb-4 text-sm sm:text-base">©2024 SDLG. Todos los derechos reservados.</p>
+        <p class="text-gray-600 mb-4 text-sm sm:text-base"><a href="/blog/home/">©2024 SDLG.</a> Todos los derechos reservados.</p>
         {% endblock %}
     </div>
 </footer>

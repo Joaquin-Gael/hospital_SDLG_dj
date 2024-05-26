@@ -71,10 +71,15 @@ WSGI_APPLICATION = 'hospital_SDLG_dj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+# Cargar la URL de la base de datos desde el archivo .env
+DATABASE_URL = os.environ.get('DATABASE_URL', default='sqlite:///db.sqlite3')
 
+# Configuración de la base de datos
 DATABASES = {
-    'default': dj_database_url.config(DATABASE_URL, conn_max_age=600, default='sqlite:///db.sqlite3')
+    'default': dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600
+    )
 }
 
 # Password validation

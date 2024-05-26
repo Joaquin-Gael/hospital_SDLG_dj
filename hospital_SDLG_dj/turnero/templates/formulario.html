@@ -7,6 +7,7 @@
 {% block content %}
 <div class="container mx-auto my-12 p-6 bg-white rounded shadow">
     <h2 class="text-3xl font-bold text-center mb-8">Solicitar Turno</h2>
+    <p class="text-red-500">{{error}}</p>
     <form method="post">
         {% csrf_token %}
         <div class="mb-4">
@@ -37,7 +38,7 @@
             <label for="medico" class="block text-gray-700 text-sm font-bold mb-2">Médico:</label>
             <select id="medico" name="medico" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 {% for medico in medicos %}
-                <option value="{{ medico.id }}">{{ medico.nombre }} {{ medico.apellido }}</option>
+                <option value="{{ medico.id }}">{{ medico.nombre }} {{ medico.apellido }} {{medico.especialidad}}</option>
                 {% endfor %}
             </select>
         </div>

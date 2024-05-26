@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
+from django.contrib import messages
 from django.utils import timezone
 from . import models, forms
 
@@ -9,33 +10,48 @@ from . import models, forms
 @login_required
 def form_turnero(request):
     if request.method == 'POST':
-        print(request.POST)
-        form = forms.TurnoForm(request.POST)
-        if form.is_valid():
-            try:
-                usuario = models.Usuario.objects.get(
-                    nombre=form.cleaned_data['paciente_nombre'],
-                    apellido=form.cleaned_data['paciente_apellido'],
-                    fecha_nacimiento=form.cleaned_data['fecha_nacimiento'],
-                    email=form.cleaned_data['email']
-                )
-            except models.Usuario.DoesNotExist:
-                return redirect('registro_usuario')
-            paciente, created = models.Paciente.objects.get_or_create(
-                usuario=usuario,
-                defaults={'direccion': form.cleaned_data['direccion']}
+        paciente_nombre = request.POST.get('paciente_nombre')
+        paciente_apellido = request.POST.get('paciente_apellido')
+        fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        direccion = request.POST.get('direccion')
+        telefono = request.POST.get('telefono')
+        email = request.POST.get('email')
+        medico_id = request.POST.get('medico')
+        fecha_turno = request.POST.get('fecha')
+        motivo = request.POST.get('motivo')
+
+        try:
+            usuario = models.Usuario.objects.get(
+                nombre=paciente_nombre,
+                apellido=paciente_apellido,
+                fecha_nacimiento=fecha_nacimiento,
+                email=email
             )
-            turno = form.save(commit=False)
-            turno.paciente = paciente
-            turno.save()
-            return redirect('home_blog')
-        else:
+        except models.Usuario.DoesNotExist:
+            messages.error(request, 'Usuario no encontrado. Por favor, registre el usuario primero.')
             medicos = models.Medico.objects.all()
-            return render(request, 'formulario.html',{'medicos':medicos})
+            return render(request, 'formulario.html', {'medicos': medicos, 'error':'No se encontro usuario existente con esta descripcion\n le recomiendo que se registre'})
+
+        paciente, created = models.Paciente.objects.get_or_create(
+            usuario=usuario,
+            defaults={'direccion': direccion, 'telefono': telefono}
+        )
+
+        medico = models.Medico.objects.get(id=medico_id)
+
+        turno = models.Turno.objects.create(
+            paciente=paciente,
+            medico=medico,
+            fecha=fecha_turno,
+            motivo=motivo
+        )
+
+        messages.success(request, 'Turno creado exitosamente.')
+        return redirect('home_blog')
+
     else:
-        form = forms.TurnoForm()
-    medicos = models.Medico.objects.all()
-    return render(request, 'formulario.html',{'medicos':medicos})
+        medicos = models.Medico.objects.all()
+        return render(request, 'formulario.html', {'medicos': medicos})
 
 def loguin_turnero(request):
     if request.method == 'POST':
