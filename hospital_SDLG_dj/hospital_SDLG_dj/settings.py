@@ -6,7 +6,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-dotenv.read_dotenv(str(BASE_DIR / ".env"))
+dotenv.load_dotenv(str(BASE_DIR / ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -29,7 +29,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'turnero'
+    'turnero',
+    'user_panel',
+    'chatbot'
 ]
 
 # Añade esta configuración para los backends de autenticación
@@ -57,6 +59,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'blog', 'templates'),
             os.path.join(BASE_DIR, 'turnero', 'templates'),
             os.path.join(BASE_DIR, 'user_panel', 'templates'),
+            os.path.join(BASE_DIR, 'chatbot', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,7 +127,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'blog/static'),
     os.path.join(BASE_DIR, 'turnero/static'),
-    os.path.join(BASE_DIR, 'user_panel/static')
+    os.path.join(BASE_DIR, 'user_panel/static'),
+    os.path.join(BASE_DIR, 'chatbot/static'),
 ]
 
 # Directorio donde se recopilarán todos los archivos estáticos (en producción)

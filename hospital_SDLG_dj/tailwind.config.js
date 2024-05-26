@@ -3,6 +3,7 @@ module.exports = {
     './blog/templates/**/*.html',
     './turnero/templates/**/*.html',
     './user_panel/templates/**/*.html',
+    './chatbot/templates/**/*.html',
   ],
   darkMode: false, // O 'media' o 'class'
   theme: {

@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:css:chatbot": "tailwindcss -i ./chatbot/static/CSS/style.css -o ./chatbot/static/CSS/main.css",
     "build:css:blog": "tailwindcss -i ./blog/static/CSS/style.css -o ./blog/static/CSS/main.css",
     "build:css:turnero": "tailwindcss -i ./turnero/static/CSS/style.css -o ./turnero/static/CSS/main.css",
     "build:css:user_panel": "tailwindcss -i ./user_panel/static/CSS/style.css -o ./user_panel/static/CSS/main.css",
-    "build:css": "npm run build:css:blog && npm run build:css:turnero && npm run build:css:user_panel",
-    "watch:css:blog": "tailwindcss -i ./blog/static/CSS/style.css -o ./blog/static/CSS/main.css --watch",
+    "build:css": "npm run build:css:blog && npm run build:css:turnero && npm run build:css:user_panel && npm run build:css:chatbot",
+    "watch:css:chatbot": "tailwindcss -i ./blog/static/CSS/style.css -o ./blog/static/CSS/main.css --watch",
+    "watch:css:blog": "tailwindcss -i ./chatbot/static/CSS/style.css -o ./chatbot/static/CSS/main.css --watch",
     "watch:css:turnero": "tailwindcss -i ./turnero/static/CSS/style.css -o ./turnero/static/CSS/main.css --watch",
     "watch:css:user_panel": "tailwindcss -i ./user_panel/static/CSS/style.css -o ./user_panel/static/CSS/main.css --watch",
-    "watch:css": "npm run watch:css:blog && npm run watch:css:turnero && npm run watch:css:user_panel"
+    "watch:css": "npm run watch:css:blog && npm run watch:css:turnero && npm run watch:css:user_panel && npm run watch:css:chatbot"
   },
   "keywords": [],
   "author": "",

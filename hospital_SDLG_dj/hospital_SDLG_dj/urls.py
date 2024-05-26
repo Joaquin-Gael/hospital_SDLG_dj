@@ -23,5 +23,6 @@ urlpatterns = [
     path('blog/',include('blog.urls')),
     path('turnero/',include('turnero.urls')),
     path('', views.redirect_to_home),
-    path('user/',include('user_panel.urls'))
+    path('user/',include('user_panel.urls')),
+    path('chatbot/',include('chatbot.urls')),
 ]
