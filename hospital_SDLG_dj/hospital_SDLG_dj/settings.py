@@ -53,7 +53,11 @@ ROOT_URLCONF = 'hospital_SDLG_dj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'blog', 'templates'),
+            os.path.join(BASE_DIR, 'turnero', 'templates'),
+            os.path.join(BASE_DIR, 'user_panel', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,7 +123,8 @@ STATIC_URL = 'static/'
 # Directorio donde se almacenarán los archivos estáticos de la aplicación
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'blog/static'),
-    os.path.join(BASE_DIR, 'turnero/static')
+    os.path.join(BASE_DIR, 'turnero/static'),
+    os.path.join(BASE_DIR, 'user_panel/static')
 ]
 
 # Directorio donde se recopilarán todos los archivos estáticos (en producción)

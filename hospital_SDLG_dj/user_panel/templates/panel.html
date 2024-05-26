@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel de Usuario - Hospital SDLG{% endblock %}
+
+{% load static %}
+
+{% block extra_head %}
+<!-- Agrega aquí cualquier estilo adicional específico del panel de usuario -->
+{% endblock %}
+
+{% block content %}
+<!-- Contenido del panel de usuario -->
+<section class="container mx-auto my-12 p-6 bg-white rounded shadow">
+    <h2 class="text-3xl font-bold text-center mb-8">Panel de Usuario</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Aquí puedes agregar los diferentes elementos del panel de usuario -->
+        <div class="text-center p-4">
+            <img src="{% static 'IMG/perfil.png' %}" alt="Perfil de Usuario" class="h-auto w-24 mx-auto mb-4 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Perfil</h3>
+            <p>Visualiza y actualiza tu información de perfil.</p>
+        </div>
+        <div class="text-center p-4">
+            <img src="{% static 'IMG/turnos.png' %}" alt="Mis Turnos" class="h-auto w-24 mx-auto mb-4 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Mis Turnos</h3>
+            <p>Consulta y gestiona tus próximos turnos médicos.</p>
+        </div>
+        <div class="text-center p-4">
+            <img src="{% static 'IMG/historial.png' %}" alt="Historial de Turnos" class="h-auto w-24 mx-auto mb-4 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Historial de Turnos</h3>
+            <p>Accede al historial de tus turnos anteriores.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
