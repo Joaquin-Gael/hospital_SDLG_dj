@@ -6,6 +6,7 @@
     <meta name="description" content="Hospital SDLG ofrece atención médica de calidad en Córdoba. Consulta médica, diagnóstico y tratamiento con equipos de última tecnología. ¡Solicita turno ahora!">
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static '/CSS/main.css' %}">
     <link rel="icon" href="{% static 'IMG/logo.png' %}" type="image/x-icon">
@@ -70,6 +71,15 @@
             <a href="/blog/atencion_al_paciente/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-md"></i> Atención al Paciente</a>
             <a href="/blog/contactos" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-phone"></i> Contacto</a>
             <a href="/turnero/singup/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-plus"></i> Registrarme</a>
+            {% if user.is_authenticated %}
+            <a href="/user/panel/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fa-solid fa-table-columns"></i> Panel</a>
+            <div class="flex items-center gap-4">
+                <div class="font-medium dark:text-white">
+                    <div>{{username}}</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">FDN: {{fecha_de_nacimiento}}</div>
+                </div>
+            </div>
+            {% endif %}
         </nav>
         <nav id="navbar-mobile" class="md:hidden">
             <ul>
@@ -77,6 +87,9 @@
                 <li><a href="/blog/atencion_al_paciente/">Atención al Paciente</a></li>
                 <li><a href="/blog/contactos">Contacto</a></li>
                 <li><a href="/turnero/singup/">Registrarme</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/user/panel/">Panel</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>
