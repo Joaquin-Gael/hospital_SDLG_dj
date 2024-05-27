@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
 from threading import Thread
@@ -15,9 +13,17 @@ def is_port_in_use(port):
 def kill_process_using_port(port):
     """Detiene el proceso que utiliza el puerto especificado."""
     for conn in psutil.net_connections():
-        if conn.laddr.port == port:
-            process = psutil.Process(conn.pid)
-            process.terminate()
+        try:
+            if conn.laddr.port == port and conn.pid != 0:  # Añadir condición para evitar PID 0
+                process = psutil.Process(conn.pid)
+                process.terminate()
+                print(f"Proceso con PID {conn.pid} detenido.")
+        except psutil.NoSuchProcess:
+            # El proceso ya no existe, continuar con el siguiente
+            pass
+        except psutil.AccessDenied:
+            # No se tienen permisos para terminar el proceso, continuar con el siguiente
+            print(f"No se tienen permisos para detener el proceso con PID {conn.pid}.")
 
 def run_streamlit_server():
     streamlit_command = "streamlit run chatbot/streamlit_app/chatbot_logic.py"
@@ -37,13 +43,14 @@ def main():
     
     # Verifica si el servidor de Streamlit ya está en ejecución en el puerto 8501
     if is_port_in_use(8501):
+        print("El puerto 8501 ya está en uso.")
         # Detiene cualquier proceso que esté utilizando el puerto 8501
         kill_process_using_port(8501)
-    else:
-        # Arranca el servidor de Streamlit en un hilo aparte
-        streamlit_thread = Thread(target=run_streamlit_server)
-        streamlit_thread.daemon = True
-        streamlit_thread.start()
+    
+    # Arranca el servidor de Streamlit en un hilo aparte
+    streamlit_thread = Thread(target=run_streamlit_server)
+    streamlit_thread.daemon = True
+    streamlit_thread.start()
 
     execute_from_command_line(sys.argv)
 

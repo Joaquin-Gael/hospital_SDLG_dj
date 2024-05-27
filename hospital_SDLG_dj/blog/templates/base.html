@@ -10,6 +10,46 @@
     <link rel="stylesheet" type="text/css" href="{% static '/CSS/main.css' %}">
     <link rel="icon" href="{% static 'IMG/logo.png' %}" type="image/x-icon">
     {% block extra_head %}{% endblock %}
+    <style>
+        /* Estilos adicionales para el menú */
+        #navbar-mobile {
+            display: none;
+            position: absolute;
+            top: 16%; /* Alinear el menú con la parte inferior del contenedor principal */
+            left: 0;
+            width: 100%;
+            text-align: center; /* Centrar los elementos del menú */
+            background-color: #ffffff; /* Color de fondo del menú */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+            z-index: 999; /* Asegurar que el menú aparezca sobre otros elementos */
+        }
+
+        #navbar-mobile.active {
+            display: block;
+        }
+        
+        #navbar-mobile ul {
+            list-style: none; /* Quitar los puntos de la lista */
+            padding: 0; /* Quitar el relleno */
+        }
+
+        #navbar-mobile ul li {
+            margin-bottom: 10px; /* Espacio entre elementos del menú */
+        }
+
+        #navbar-mobile ul li a {
+            display: block;
+            padding: 10px;
+            color: #333333; /* Color del texto del menú */
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #navbar-mobile ul li a:hover {
+            background-color: #333333; /* Color de fondo al pasar el ratón */
+            color: #ffffff; /* Color del texto al pasar el ratón */
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
@@ -17,24 +57,28 @@
 <header class="bg-white text-gray-900 p-4 shadow">
     <div class="container mx-auto flex justify-between items-center md:space-x-40">
         {% block header_logo %}
-        <div class="flex items-center flex-col md:flex-row">
+        <div class="flex items-center">
             <img src="{% static 'IMG/logo.png' %}" alt="logo del hospital SDLG" class="h-12 mr-2">
             <a href="/blog/home/"><img src="{% static 'IMG/nombrelogo.png' %}" alt="nombre del hospital SDLG" class="h-12"></a>
         </div>
         {% endblock %}
-        {% block nav %}
         <button id="menu-toggle" class="block md:hidden px-2 py-1 text-gray-800 rounded border border-gray-400">
             <i class="fas fa-bars"></i>
         </button>
-        <nav id="navbar" class="hidden md:flex md:items-center md:space-x-4 md:justify-end w-full md:w-auto">
-            <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-                <li><a href="/turnero/form/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="far fa-calendar-alt"></i> Turnos</a></li>
-                <li><a href="/blog/atencion_al_paciente/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-md"></i> Atención al Paciente</a></li>
-                <li><a href="/blog/contactos" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-phone"></i> Contacto</a></li>
-                <li><a href="/turnero/singup/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-plus"></i> Registrarme</a></li>
+        <nav id="navbar-desktop" class="hidden md:flex items-center space-x-4">
+            <a href="/turnero/form/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="far fa-calendar-alt"></i> Turnos</a>
+            <a href="/blog/atencion_al_paciente/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-md"></i> Atención al Paciente</a>
+            <a href="/blog/contactos" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-phone"></i> Contacto</a>
+            <a href="/turnero/singup/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-plus"></i> Registrarme</a>
+        </nav>
+        <nav id="navbar-mobile" class="md:hidden">
+            <ul>
+                <li><a href="/turnero/form/">Turnos</a></li>
+                <li><a href="/blog/atencion_al_paciente/">Atención al Paciente</a></li>
+                <li><a href="/blog/contactos">Contacto</a></li>
+                <li><a href="/turnero/singup/">Registrarme</a></li>
             </ul>
         </nav>
-        {% endblock %}
     </div>
 </header>
 
@@ -74,7 +118,18 @@
         {% endblock %}
     </div>
 </footer>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbarMobile = document.getElementById('navbar-mobile');
 
+        menuToggle.addEventListener('click', function() {
+            navbarMobile.classList.toggle('active');
+        });
+    });
+</script>
 <script src="{% static 'JS/blog_scripts.js' %}"></script>
 
 <!-- Bloque para scripts adicionales -->
