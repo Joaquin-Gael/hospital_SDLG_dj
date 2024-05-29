@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel de Usuario - Hospital SDLG{% endblock %}
+
+{% load static %}
+
+{% block extra_head %}
+<!-- Agrega aquí cualquier estilo adicional específico del panel de usuario -->
+{% endblock %}
+
+{% block content %}
+<section class="container mx-auto my-12 p-6 bg-white rounded shadow">
+    {% if error %}
+    <div class="flex items-center justify-center">
+        <h2 class="text-xl text-red-700 hover:text-red-700">{{error}}</h2>
+    </div>
+    {% endif %}
+    <!-- Tabla con los turnos -->
+    <div class="overflow-x-auto mt-8">
+        <div class="relative overflow-hidden shadow-md ">
+            <table class="table-auto w-full text-left">
+                <thead class="uppercase bg-[#111827] text-[#e5e7eb]" style="background-color: #111827; color: #e5e7eb;">
+                    <tr>
+                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Código del Turno</td>
+                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Medico</td>
+                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Horario</td>
+                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Fecha</td>
+                    </tr>
+                </thead>
+                <tbody class="bg-[#FFFFFF] text-[#1e2533]" style="background-color: #FFFFFF; color: #1e2533;">
+                    {% for turno in turnos %}
+                    <tr class="py-10">
+                        <td class="py-10  text-center  p-4" contenteditable="true">YY-{{ turno.id }}</td>
+                        <td class="py-10  text-center  p-4" contenteditable="true">{{ turno.medico.nombre }}</td>
+                        <td class="py-10  text-center  p-4" contenteditable="true">{{ turno.horario.hora_inicio }} - {{ turno.horario.hora_fin }}</td>
+                        <td class="py-10  text-center  p-4" contenteditable="true">{{ turno.fecha }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
