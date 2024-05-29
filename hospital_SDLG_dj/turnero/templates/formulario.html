@@ -12,7 +12,7 @@
 <div class="container mx-auto my-12 p-6 bg-white rounded shadow">
     <h2 class="text-3xl font-bold text-center mb-8">Solicitar Turno</h2>
     <p class="text-red-500">{{error}}</p>
-    <form method="post">
+    <form method="post" class="grid grid-cols-2 gap-6">
         {% csrf_token %}
         <div class="mb-4">
             <label for="paciente_nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
@@ -58,11 +58,11 @@
             <label for="fecha" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Turno:</label>
             <input type="date" id="fecha" name="fecha" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="mb-4 col-span-2">
             <label for="motivo" class="block text-gray-700 text-sm font-bold mb-2">Motivo del Turno:</label>
             <textarea id="motivo" name="motivo" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between col-span-2">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sacar Turno</button>
         </div>
     </form>
