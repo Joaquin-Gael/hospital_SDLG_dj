@@ -19,7 +19,7 @@ def form_turnero(request):
         medico_id = request.POST.get('medico')
         fecha_turno = request.POST.get('fecha')
         motivo = request.POST.get('motivo')
-        horario_turno = request.POST.grt('horario')
+        horario_turno = request.POST.get('horario')
         try:
             print(horario_turno)
             usuario = models.Usuario.objects.get(
@@ -39,13 +39,14 @@ def form_turnero(request):
         )
 
         medico = models.Medico.objects.get(id=medico_id)
+        horario = models.Horario_medicos.objects.get(id=horario_turno)
 
         turno = models.Turno.objects.create(
             paciente=paciente,
             medico=medico,
             fecha=fecha_turno,
             motivo=motivo,
-            horario=horario_turno
+            horario=horario
         )
 
         messages.success(request, 'Turno creado exitosamente.')
