@@ -73,9 +73,9 @@ def main():
     check_and_kill_ports(ports_to_check)
 
     # Arranca el servidor de Streamlit en el puerto 8501
-    streamlit_thread = Thread(target=run_streamlit_server, args=(8501,))
-    streamlit_thread.daemon = True
-    streamlit_thread.start()
+    #streamlit_thread = Thread(target=run_streamlit_server, args=(8501,))
+    #streamlit_thread.daemon = True
+    #streamlit_thread.start()
 
     execute_from_command_line(sys.argv)
 

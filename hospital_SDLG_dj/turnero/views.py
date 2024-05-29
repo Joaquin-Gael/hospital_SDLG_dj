@@ -19,8 +19,9 @@ def form_turnero(request):
         medico_id = request.POST.get('medico')
         fecha_turno = request.POST.get('fecha')
         motivo = request.POST.get('motivo')
-
+        horario_turno = request.POST.grt('horario')
         try:
+            print(horario_turno)
             usuario = models.Usuario.objects.get(
                 nombre=paciente_nombre,
                 apellido=paciente_apellido,
@@ -43,15 +44,17 @@ def form_turnero(request):
             paciente=paciente,
             medico=medico,
             fecha=fecha_turno,
-            motivo=motivo
+            motivo=motivo,
+            horario=horario_turno
         )
 
         messages.success(request, 'Turno creado exitosamente.')
         return redirect('home_blog')
 
     else:
+        horarios = models.Horario_medicos.objects.all()
         medicos = models.Medico.objects.all()
-        return render(request, 'formulario.html', {'medicos': medicos})
+        return render(request, 'formulario.html', {'medicos': medicos,'horarios':horarios})
 
 def loguin_turnero(request):
     if request.method == 'POST':
@@ -77,4 +80,4 @@ def signup_turnero(request):
             return redirect('form_turnero')
     else:
         form = forms.RegistroUsuarioForm() 
-    return render(request, 'SignUp.html', {'form': form})
+    return render(request, 'SignUp.html')

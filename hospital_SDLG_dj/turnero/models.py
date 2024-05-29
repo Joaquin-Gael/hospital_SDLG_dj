@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.utils.timezone import now
+from datetime import time
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, dni, nombre, apellido, fecha_nacimiento, email, contraseña=None):
@@ -49,6 +51,14 @@ class Medico(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido} {self.especialidad}"
 
+class Horario_medicos(models.Model):
+    medico = models.ForeignKey(Medico,on_delete=models.CASCADE)
+    hora_inicio = models.TimeField()
+    hora_fin = models.TimeField()
+
+    def __str__(self) -> str:
+        return f"{self.medico} {self.hora_inicio} {self.hora_fin}"
+
 class Usuario(AbstractBaseUser):
     dni = models.CharField(max_length=100, unique=True)
     nombre = models.CharField(max_length=100)
@@ -88,7 +98,8 @@ class Turno(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     fecha_created = models.DateTimeField(auto_now=True)
-    fecha = models.DateTimeField()
+    fecha = models.DateField(default=now)
+    horario = models.ForeignKey(Horario_medicos,on_delete=models.CASCADE)
     motivo = models.CharField(max_length=255)
 
     def __str__(self):

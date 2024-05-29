@@ -5,7 +5,6 @@ class DNIAuthBackend(BaseBackend):
     def authenticate(self, request, dni=None, password=None):
         try:
             usuario = Usuario.objects.get(dni=dni)
-            print(usuario)
             if usuario.check_password(password):
                 return usuario
         except Usuario.DoesNotExist:
