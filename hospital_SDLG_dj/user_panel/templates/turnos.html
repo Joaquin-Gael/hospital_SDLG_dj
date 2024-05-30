@@ -6,6 +6,42 @@
 
 {% block extra_head %}
 <!-- Agrega aquí cualquier estilo adicional específico del panel de usuario -->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/main.css' %}">
+    <style>
+        @media (max-width: 640px) {
+            /* Oculta el encabezado de la tabla en pantallas pequeñas */
+            .responsive-table thead {
+                display: none;
+            }
+        
+            /* Muestra cada fila de la tabla como un bloque en pantallas pequeñas */
+            .responsive-table tr {
+                display: block;
+                margin-bottom: 0.625em;
+            }
+        
+            /* Muestra cada celda de la tabla como un bloque en pantallas pequeñas */
+            .responsive-table td {
+                display: block;
+                text-align: right; /* Alinea el contenido de la celda a la derecha */
+                font-size: 0.8em;  /* Ajusta el tamaño de la fuente para ser más pequeño */
+                border-bottom: 1px solid #e5e7eb; /* Agrega una línea inferior a cada celda */
+                position: relative; /* Posiciona la celda relativamente para permitir el uso de ::before */
+                padding-left: 50%; /* Agrega un padding a la izquierda para espacio del pseudo-elemento ::before */
+            }
+        
+            /* Antes del contenido de la celda, muestra el nombre de la columna */
+            .responsive-table td::before {
+                content: attr(data-label); /* Utiliza el atributo data-label para el contenido */
+                position: absolute; /* Posiciona el pseudo-elemento de forma absoluta */
+                left: 0; /* Alinea el pseudo-elemento a la izquierda */
+                width: 50%; /* El pseudo-elemento ocupa el 50% del ancho de la celda */
+                padding-left: 15px; /* Agrega padding a la izquierda para el pseudo-elemento */
+                font-weight: bold; /* Hace que el texto del pseudo-elemento sea negrita */
+                text-align: left; /* Alinea el texto del pseudo-elemento a la izquierda */
+            }
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -16,28 +52,40 @@
     </div>
     {% endif %}
     <!-- Tabla con los turnos -->
-    <div class="overflow-x-auto mt-8">
-        <div class="relative overflow-hidden shadow-md ">
-            <table class="table-auto w-full text-left">
-                <thead class="uppercase bg-[#111827] text-[#e5e7eb]" style="background-color: #111827; color: #e5e7eb;">
-                    <tr>
-                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Código del Turno</td>
-                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Medico</td>
-                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Horario</td>
-                        <td class="py-0  text-center font-bold p-4" contenteditable="true">Fecha</td>
-                    </tr>
-                </thead>
-                <tbody class="bg-[#FFFFFF] text-[#1e2533]" style="background-color: #FFFFFF; color: #1e2533;">
-                    {% for turno in turnos %}
-                    <tr class="py-10">
-                        <td class="py-10  text-center  p-4" contenteditable="true">YY-{{ turno.id }}</td>
-                        <td class="py-10  text-center  p-4" contenteditable="true">{{ turno.medico.nombre }}</td>
-                        <td class="py-10  text-center  p-4" contenteditable="true">{{ turno.horario.hora_inicio }} - {{ turno.horario.hora_fin }}</td>
-                        <td class="py-10  text-center  p-4" contenteditable="true">{{ turno.fecha }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <div class="container mx-auto p-4">
+        <div class="overflow-x-auto mt-8">
+            <div class="relative overflow-hidden shadow-md">
+                <table class="responsive-table table-auto w-full text-left">
+                    <thead class="uppercase bg-[#111827] text-[#e5e7eb]">
+                        <tr>
+                            <th class="py-2 px-4 text-center font-bold">Código del Turno</th>
+                            <th class="py-2 px-4 text-center font-bold">Medico</th>
+                            <th class="py-2 px-4 text-center font-bold">Horario</th>
+                            <th class="py-2 px-4 text-center font-bold">Fecha</th>
+                            <th class="py-2 px-4 text-center font-bold"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-[#FFFFFF] text-[#1e2533]">
+                        {% for turno in turnos %}
+                        <tr class="py-4">
+                            <td class="py-2 px-4 text-center" data-label="Código del Turno">YY-{{ turno.id }}</td>
+                            <td class="py-2 px-4 text-center" data-label="Medico">{{ turno.medico.nombre }}</td>
+                            <td class="py-2 px-4 text-center" data-label="Horario">{{ turno.horario.hora_inicio }} - {{ turno.horario.hora_fin }}</td>
+                            <td class="py-2 px-4 text-center" data-label="Fecha">{{ turno.fecha }}</td>
+                            <td class="py-2 px-4 text-center" data-label="">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ turno.id }}">
+                                    <button class="border border-red-800 rounded-md p-2 hover:bg-red-600 text-red-800 hover:text-white transition duration-300 ease-in-out" type="submit">
+                                        <i class="fas fa-trash mr-2"></i> Cancelar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>

@@ -7,7 +7,7 @@
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static '/CSS/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/main.css' %}">
     <link rel="icon" href="{% static 'IMG/papu_logo.png' %}" type="image/x-icon">
     {% block extra_head %}{% endblock %}
     <style>
@@ -15,7 +15,7 @@
         #navbar-mobile {
             display: none;
             position: absolute;
-            top: 16%; /* Alinear el menú con la parte inferior del contenedor principal */
+            top: 9%; /* Alinear el menú con la parte inferior del contenedor principal */
             left: 0;
             width: 100%;
             text-align: center; /* Centrar los elementos del menú */
@@ -72,8 +72,9 @@
             <a href="/turnero/singup/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fas fa-user-plus"></i> Registrarme</a>
             {% if user.is_authenticated %}
             <a href="/user/panel/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fa-solid fa-table-columns"></i> Panel</a>
+            <a href="/turnero/loguot/" class="transition duration-300 ease-in-out hover:bg-black hover:text-white px-2 py-2 rounded-lg"><i class="fa-solid fa-door-open"></i> Cerrar Secion</a>
             <div class="flex items-center gap-4">
-                <div class="font-medium dark:text-white">
+                <div class="font-medium text-[#111827]">
                     <div>{{username}}</div>
                     <div class="text-sm text-gray-500 dark:text-gray-400">FDN: {{fecha_de_nacimiento}}</div>
                 </div>
@@ -88,6 +89,7 @@
                 <li><a href="/turnero/singup/">Registrarme</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="/user/panel/">Panel</a></li>
+                <li><a href="/turnero/loguot/">Cerrar Secion</a></li>
                 {% endif %}
             </ul>
         </nav>

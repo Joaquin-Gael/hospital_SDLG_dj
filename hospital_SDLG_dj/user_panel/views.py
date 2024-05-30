@@ -3,6 +3,7 @@ from turnero import models as turn_models
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def user_panel(request):
     return render(request,'panel.html')
 

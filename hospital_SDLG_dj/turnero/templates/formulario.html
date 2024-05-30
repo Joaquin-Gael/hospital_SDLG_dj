@@ -6,39 +6,40 @@
 
 {% block extra_head %}
 <!-- Agrega aquí cualquier estilo adicional específico del panel de usuario -->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/main.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container mx-auto my-12 p-6 bg-white rounded shadow">
+<div class="p-6 bg-white rounded shadow">
     <h2 class="text-3xl font-bold text-center mb-8">Solicitar Turno</h2>
     <p class="text-red-500">{{error}}</p>
-    <form method="post" class="grid grid-cols-2 gap-6">
+    <form method="post" class="container md:grid grid-cols-2 grid-rows-6 gap-3">
         {% csrf_token %}
-        <div class="mb-4">
+        <div class="">
             <label for="paciente_nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
             <input type="text" id="paciente_nombre" name="paciente_nombre" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="paciente_apellido" class="block text-gray-700 text-sm font-bold mb-2">Apellido:</label>
             <input type="text" id="paciente_apellido" name="paciente_apellido" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="fecha_nacimiento" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Nacimiento:</label>
             <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="direccion" class="block text-gray-700 text-sm font-bold mb-2">Dirección:</label>
             <input type="text" id="direccion" name="direccion" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2">Teléfono:</label>
             <input type="text" id="telefono" name="telefono" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
             <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="medico" class="block text-gray-700 text-sm font-bold mb-2">Médico:</label>
             <select id="medico" name="medico" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 {% for medico in medicos %}
@@ -46,7 +47,7 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="horario" class="block text-gray-700 text-sm font-bold mb-2">Horario del Turno:</label>
             <select id="horario" name="horario" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 {% for horario in horarios %}
@@ -54,11 +55,11 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="mb-4">
+        <div class="">
             <label for="fecha" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Turno:</label>
             <input type="date" id="fecha" name="fecha" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4 col-span-2">
+        <div class="col-span-2">
             <label for="motivo" class="block text-gray-700 text-sm font-bold mb-2">Motivo del Turno:</label>
             <textarea id="motivo" name="motivo" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
         </div>
