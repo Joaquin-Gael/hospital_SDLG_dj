@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('panel/',views.user_panel),
-    path('turnos/',views.turnos_list)
+    path('turnos/',views.turnos_list,name='lista_de_turnos')
 ]
