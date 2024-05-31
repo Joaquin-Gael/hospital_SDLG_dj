@@ -16,10 +16,10 @@
     <div class="flex justify-center items-center">
         <img class="rounded w-52 h-52" src="{% static 'SVG/useranonimo.svg' %}" alt="{{letras}}">
     </div>    
-    <div class="sm:hidden flex justify-center items-center">
-        <p class="text-xl">Usuario: {{username}}</p>
+    <div class="md:hidden flex justify-center items-center">
+        <p class="text-xl font-bold mb-4">Usuario: {{username}}</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
         <!-- Aquí puedes agregar los diferentes elementos del panel de usuario -->
         <div class="text-center p-4">
             <i class="fa-solid fa-user-pen"></i>
@@ -35,6 +35,11 @@
             <i class="fa-solid fa-clock-rotate-left"></i>
             <h3 class="text-xl font-semibold mb-2">Historial de Turnos</h3>
             <p>Accede al historial de tus turnos anteriores.</p>
+        </div>
+        <div class="text-center p-4">
+            <i class="fa-solid fa-tag"></i>
+            <h3 class="text-xl font-semibold mb-2"><a href="/user/testimonios/">Testimonio</a></h3>
+            <p>Deja un testimonio de tu estadia en el Hospital SDLG.</p>
         </div>
     </div>
 </section>

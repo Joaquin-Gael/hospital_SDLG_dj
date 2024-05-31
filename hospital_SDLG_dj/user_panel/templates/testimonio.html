@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro de Testimonios | Hospital SDLG{% endblock %}
+
+{% block extra_head %}
+<!-- Agrega aquí cualquier estilo adicional específico del panel de usuario -->
+{% endblock %}
+
+{% block content %}
+<section class="bg-gray-200 py-12">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8">Registro de Testimonios</h2>
+        <form class="w-full max-w-lg mx-auto bg-white p-8 rounded shadow-xl shadow-[#2D5573] 500/75" method="post"> 
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="contenido" class="block text-left text-gray-700 text-sm font-bold mb-2">Contenido del Testimonio:</label>
+                <textarea id="contenido" name="contenido" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Escribe tu testimonio aquí" rows="6">{{testimonio.contenido}}</textarea>
+            </div>
+            <button type="submit" class="hover:bg-gray-500 w-full text-white bg-blue-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center my-6">Enviar Testimonio</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

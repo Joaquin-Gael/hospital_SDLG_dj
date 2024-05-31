@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from turnero import models as turn_models
+from blog import models as blog_models
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -52,3 +53,35 @@ def turnos_list(request):
         except Exception as err:
             print(err)
             return redirect('home_blog')
+
+@login_required
+def form_testimonios(request):
+    try:
+        user = turn_models.Usuario.objects.get(id=request.user.id)
+        testimonio_existente = blog_models.Testimonios.objects.filter(usuario=user).exists()
+    except Exception as err:
+        print(err)
+        return redirect('panel')
+    if testimonio_existente:
+        # Si el usuario ya tiene un testimonio, permitir editar
+        if request.method == 'POST':
+            contenido = request.POST.get('contenido')
+            # Actualizar el testimonio existente
+            testimonio = blog_models.Testimonios.objects.get(usuario=user)
+            testimonio.contenido = contenido
+            testimonio.save()
+            return redirect('panel')
+        else:
+            # Renderizar la vista de edición con el contenido del testimonio existente
+            testimonio = blog_models.Testimonios.objects.get(usuario=user)
+            return render(request, 'testimonio.html', {'testimonio': testimonio})
+    else:
+        # Si el usuario no tiene un testimonio, permitir crear uno nuevo
+        if request.method == 'POST':
+            contenido = request.POST.get('contenido')
+            # Crear un nuevo testimonio
+            blog_models.Testimonios.objects.create(contenido=contenido, usuario=user)
+            return redirect('panel')
+        else:
+            # Renderizar la vista de creación
+            return render(request, 'testimonio.html')
