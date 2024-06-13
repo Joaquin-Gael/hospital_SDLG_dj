@@ -7,7 +7,7 @@ class UsuarioManager(BaseUserManager):
     def create_user(self, dni, nombre, apellido, fecha_nacimiento, email, contraseña=None):
         if not dni:
             raise ValueError('El DNI es obligatorio')
-
+        
         user = self.model(
             dni=dni,
             nombre=nombre,
